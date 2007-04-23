@@ -1,12 +1,12 @@
 Summary:	Recursor for PowerDNS
 Name:		pdns-recursor
-Version:	3.1.2
+Version:	3.1.4
 Release:	%mkrel 1
 License:	GPL
 Group:		System/Servers
 URL:		http://www.powerdns.com/
 Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
-Source1:	powerdns-recursor.init.bz2
+Source1:	powerdns-recursor.init
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires(pre): rpm-helper
@@ -30,6 +30,8 @@ insight into nameserver performance.
 %prep
 
 %setup -q -n %{name}-%{version}
+
+cp %{SOURCE1} .
 
 chmod 644 rrd/*
 
@@ -73,8 +75,7 @@ daemon=yes
 quiet=on
 EOF
 
-bzcat %{SOURCE1} > %{buildroot}%{_initrddir}/powerdns-recursor
-chmod 755 %{buildroot}%{_initrddir}/powerdns-recursor
+install -m0755 powerdns-recursor.init %{buildroot}%{_initrddir}/powerdns-recursor
 
 %pre
 %_pre_useradd powerdns /var/lib/powerdns /bin/false
@@ -101,4 +102,3 @@ chmod 755 %{buildroot}%{_initrddir}/powerdns-recursor
 %attr(0755,powerdns,powerdns) %dir /var/run/powerdns
 %attr(0644,root,root) %{_mandir}/man1/pdns_recursor.1*
 %attr(0644,root,root) %{_mandir}/man1/rec_control.1*
-
