@@ -17,6 +17,7 @@ BuildRequires:  boost-devel
 Provides:	PowerDNS-recursor
 Obsoletes:	PowerDNS-recursor
 Requires:	pdns
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 With a small codebase, the PowerDNS Recursor is an advanced recursor currently
