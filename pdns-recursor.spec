@@ -1,6 +1,6 @@
 Summary:	Recursor for PowerDNS
 Name:		pdns-recursor
-Version:	3.1.5
+Version:	3.1.6
 Release:	%mkrel 1
 License:	GPL
 Group:		System/Servers
@@ -17,7 +17,7 @@ BuildRequires:  boost-devel
 Provides:	PowerDNS-recursor
 Obsoletes:	PowerDNS-recursor
 Requires:	pdns
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 With a small codebase, the PowerDNS Recursor is an advanced recursor currently
@@ -46,7 +46,7 @@ export OPTFLAGS=""
 %make
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 # don't fiddle with the initscript!
 export DONT_GPRINTIFY=1
@@ -92,7 +92,7 @@ install -m0755 powerdns-recursor.init %{buildroot}%{_initrddir}/powerdns-recurso
 %_preun_service powerdns-recursor
 
 %clean
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
