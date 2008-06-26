@@ -1,6 +1,6 @@
 Summary:	Recursor for PowerDNS
 Name:		pdns-recursor
-Version:	3.1.6
+Version:	3.1.7
 Release:	%mkrel 1
 License:	GPL
 Group:		System/Servers
@@ -14,6 +14,7 @@ Requires(pre): rpm-helper
 Requires(postun): rpm-helper
 BuildRequires:	libstdc++-devel
 BuildRequires:  boost-devel
+BuildRequires:  lua-devel
 Provides:	PowerDNS-recursor
 Obsoletes:	PowerDNS-recursor
 Requires:	pdns
@@ -32,6 +33,7 @@ insight into nameserver performance.
 
 %setup -q -n %{name}-%{version}
 %patch0 -p0
+
 cp %{SOURCE1} .
 
 chmod 644 rrd/*
@@ -40,6 +42,9 @@ chmod 644 rrd/*
 %serverbuild
 
 export OPTFLAGS=""
+export LUA="1"
+export LUA_CPPFLAGS_CONFIG="-I%{_includedir}"
+export LUA_LIBS_CONFIG="-L%{_libdir} -llua -lm"
 
 %make basic_checks
 
