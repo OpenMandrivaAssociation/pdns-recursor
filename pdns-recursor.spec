@@ -1,7 +1,7 @@
 Summary:	Recursor for PowerDNS
 Name:		pdns-recursor
-Version:	3.1.7
-Release:	%mkrel 2
+Version:	3.1.7.1
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Servers
 URL:		http://www.powerdns.com/
@@ -9,7 +9,6 @@ Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
 Source1:	powerdns-recursor.init
 Patch0:		pdns-recursor-fixbuild.diff
 Patch1:		pdns-recursor-3.1.6-gcc-4.3.patch
-Patch2:		pdns-recursor-boost_fix.diff
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires(pre): rpm-helper
@@ -36,7 +35,6 @@ insight into nameserver performance.
 %setup -q -n %{name}-%{version}
 %patch0 -p0
 %patch1 -p1
-%patch2 -p1
 
 cp %{SOURCE1} .
 
