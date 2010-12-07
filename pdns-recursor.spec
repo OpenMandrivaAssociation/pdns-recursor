@@ -1,7 +1,7 @@
 Summary:	Recursor for PowerDNS
 Name:		pdns-recursor
 Version:	3.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.powerdns.com/
