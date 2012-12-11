@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# Startup script for the PowerDNS recursor server daemon
+#
+# chkconfig: 345 80 75
+# description: A recursor influenced by the works \
+# of Daniel J. Bernstein 
+# probe: false
+# processname: powerdns-recursor
+# pidfile: /var/run/powerdns/powerdns-recursor.pid
+# config: /etc/powerdns/recursor.conf
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ "${NETWORKING}" = "no" ] && exit 0
+
+[ -f /etc/powerdns/recursor.conf ] || exit 0
+
+[ -f /usr/sbin/pdns_recursor ] || exit 0
+
+
+# See how we were called.
+case "$1" in
+  start)
+	echo -n "Starting PowerDNS recursor server Daemon: "
+	daemon /usr/sbin/pdns_recursor
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/pdns_recursor
+	;;
+  stop)
+	echo -n "Stopping PowerDNS recursor server Daemon: "
+	killproc pdns_recursor
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/pdns_recursor
+	;;
+  status)
+	status pdns_recursor
+	RETVAL=$?
+	;;
+  restart|reload)
+	$0 stop
+	$0 start
+	RETVAL=$?
+	;;
+  *)
+	echo "Usage: powerdns-recursor {start|stop|status|restart|reload}"
+	exit 1
+esac
+
+exit $RETVAL

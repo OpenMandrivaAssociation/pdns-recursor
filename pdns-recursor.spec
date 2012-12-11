@@ -109,3 +109,71 @@ rm -rf %{buildroot}
 %attr(0755,powerdns,powerdns) %dir /var/run/powerdns
 %attr(0644,root,root) %{_mandir}/man1/pdns_recursor.1*
 %attr(0644,root,root) %{_mandir}/man1/rec_control.1*
+
+
+%changelog
+* Tue Apr 05 2011 Oden Eriksson <oeriksson@mandriva.com> 3.3-1mdv2011.0
++ Revision: 650717
+- 3.3
+
+* Tue Dec 07 2010 Oden Eriksson <oeriksson@mandriva.com> 3.2-2mdv2011.0
++ Revision: 614491
+- the mass rebuild of 2010.1 packages
+
+* Sat Mar 27 2010 Michael Scherer <misc@mandriva.org> 3.2-1mdv2010.1
++ Revision: 528262
+- update to 3.2
+- remove first patch, do not apply anymore ( code completly changed, and still build )
+- remove second patch, not needed ( compile fine without it )
+
+* Wed Jan 06 2010 Michael Scherer <misc@mandriva.org> 3.1.7.2-1mdv2010.1
++ Revision: 486754
+- update to 3.1.7.2, fix security issue
+
+* Tue Aug 04 2009 Oden Eriksson <oeriksson@mandriva.com> 3.1.7.1-1mdv2010.0
++ Revision: 409378
+- 3.1.7.1
+- drop the boost patch, it's implemented upstream
+
+* Sat Sep 13 2008 Oden Eriksson <oeriksson@mandriva.com> 3.1.7-2mdv2009.0
++ Revision: 284545
+- added a gcc43 patch from gentoo (P1)
+- added P2 to fix build against latest boost
+- fix #40099 (pdns-recursor init file (/etc/init.d/powerdns-recursor) cannot start when configured for low ports)
+
+* Thu Jun 26 2008 Oden Eriksson <oeriksson@mandriva.com> 3.1.7-1mdv2009.0
++ Revision: 229241
+- 3.1.7
+
+* Thu May 08 2008 Oden Eriksson <oeriksson@mandriva.com> 3.1.6-1mdv2009.0
++ Revision: 204497
+- 3.1.6
+
+* Mon Mar 31 2008 Oden Eriksson <oeriksson@mandriva.com> 3.1.5-1mdv2008.1
++ Revision: 191268
+- 3.1.5
+
+* Sun Mar 23 2008 Oden Eriksson <oeriksson@mandriva.com> 3.1.5-0.rc1.1mdv2008.1
++ Revision: 189575
+- 3.1.5-rc1 (3.1.4 won't build on 2008.1)
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Michael Scherer <misc@mandriva.org>
+    - fix default config and fix build
+
+* Mon Apr 23 2007 Oden Eriksson <oeriksson@mandriva.com> 3.1.4-1mdv2008.0
++ Revision: 17246
+- 3.1.4
+
+
+* Tue Jun 27 2006 Oden Eriksson <oeriksson@mandriva.com> 3.1.2-1mdv2007.0
+- 3.1.2
+
+* Wed May 24 2006 Oden Eriksson <oeriksson@mandriva.com> 3.1.1-1mdk
+- initial Mandriva package
+
