@@ -4,7 +4,7 @@ Version:	3.3
 Release:	2
 License:	GPLv2
 Group:		System/Servers
-URL:		http://www.powerdns.com/
+URL:		https://www.powerdns.com/
 Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
 Source1:	powerdns-recursor.init
 Requires(post): rpm-helper
