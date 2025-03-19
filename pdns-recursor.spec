@@ -16,6 +16,7 @@ BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libsodium)
 BuildRequires:	pkgconfig(libcap)
+BuildRequires:	cargo
 
 %description
 The PowerDNS Recursor is a high-performance DNS recursor with built-in scripting
