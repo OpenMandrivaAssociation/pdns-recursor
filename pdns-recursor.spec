@@ -16,6 +16,7 @@ BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libsodium)
 BuildRequires:	pkgconfig(libcap)
+BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	cargo
 
 %description
