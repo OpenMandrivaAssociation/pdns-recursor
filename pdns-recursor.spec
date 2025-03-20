@@ -17,6 +17,7 @@ BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libsodium)
 BuildRequires:	pkgconfig(libcap)
 BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	systemd
 BuildRequires:	cargo
 
 %description
