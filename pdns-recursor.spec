@@ -1,7 +1,8 @@
 Name:		pdns-recursor
 Version:	5.2.2
-Release:	3
+Release:	1
 Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
+Source1:	vendor.tar.xz
 Summary:	High-performance DNS recursor
 URL:		https://powerdns.com/recursor/
 License:	GPL-2.0
@@ -27,6 +28,18 @@ internet connections.
 
 %prep
 %autosetup -p1
+cd settings/rust
+tar xf %{S:1}
+mkdir .cargo
+cat >.cargo/config.toml <<EOF
+
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+cargo generate-lockfile --offline
 
 %install -a
 mv %{buildroot}%{_sysconfdir}/recursor.yml-dist %{buildroot}%{_sysconfdir}/recursor.yml
