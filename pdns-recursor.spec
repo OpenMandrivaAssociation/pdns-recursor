@@ -1,6 +1,6 @@
 Name:		pdns-recursor
 Version:	5.2.2
-Release:	2
+Release:	3
 Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
 Summary:	High-performance DNS recursor
 URL:		https://powerdns.com/recursor/
