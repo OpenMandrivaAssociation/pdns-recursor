@@ -40,6 +40,18 @@ replace-with = "vendored-sources"
 directory = "vendor"
 EOF
 cargo generate-lockfile --offline
+cd ../..
+
+mkdir -p _OMV_rpm_build/settings/rust/.cargo
+ln -s ../../../settings/rust/vendor _OMV_rpm_build/settings/rust/
+cat >_OMV_rpm_build/settings/rust/.cargo/config.toml <<EOF
+
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
 
 %install -a
 mv %{buildroot}%{_sysconfdir}/recursor.yml-dist %{buildroot}%{_sysconfdir}/recursor.yml
