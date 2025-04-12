@@ -42,6 +42,7 @@ EOF
 cargo generate-lockfile --offline
 cd ../..
 
+%conf -a
 mkdir -p _OMV_rpm_build/settings/rust/.cargo
 ln -s ../../../settings/rust/vendor _OMV_rpm_build/settings/rust/
 cat >_OMV_rpm_build/settings/rust/.cargo/config.toml <<EOF
