@@ -1,16 +1,15 @@
 Name:		pdns-recursor
-Version:	5.2.2
-Release:	2
-Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
+Version:	5.3.0
+Release:	1
+Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.xz
 Source1:	vendor.tar.xz
 Summary:	High-performance DNS recursor
 URL:		https://powerdns.com/recursor/
 License:	GPL-2.0
 Group:		Servers
-BuildSystem:	autotools
-BuildOption:	--enable-systemd
-BuildOption:	--enable-lto
-BuildOption:	--enable-dns-over-tls
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	slibtool
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(luajit)
 BuildRequires:	pkgconfig(openssl)
@@ -30,9 +29,8 @@ capabilities. It is known to power the resolving needs of over 150 million
 internet connections.
 
 %prep
-%autosetup -p1
-cd settings/rust
-tar xf %{S:1}
+%autosetup -p1 -a1
+cd rec-rust-lib/rust
 mkdir .cargo
 cat >.cargo/config.toml <<EOF
 
@@ -48,19 +46,18 @@ cd ../..
 aclocal -I m4
 autoconf
 
-%conf -a
-mkdir -p _OMV_rpm_build/settings/rust/.cargo
-ln -s ../../../settings/rust/vendor _OMV_rpm_build/settings/rust/
-cat >_OMV_rpm_build/settings/rust/.cargo/config.toml <<EOF
+%conf
+%configure \
+	--enable-systemd \
+	--enable-lto \
+	--enable-dns-over-tls
 
-[source.crates-io]
-replace-with = "vendored-sources"
+%build
+%make_build
 
-[source.vendored-sources]
-directory = "vendor"
-EOF
+%install
+%make_install
 
-%install -a
 mv %{buildroot}%{_sysconfdir}/recursor.yml-dist %{buildroot}%{_sysconfdir}/recursor.yml
 mkdir -p %{buildroot}%{_sysusersdir}
 echo 'u pdns-recursor - "PowerDNS Recursor" / %{_bindir}/nologin' >%{buildroot}%{_sysusersdir}/%{name}.conf
