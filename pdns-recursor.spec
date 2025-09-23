@@ -1,6 +1,6 @@
 Name:		pdns-recursor
 Version:	5.2.2
-Release:	1
+Release:	2
 Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
 Source1:	vendor.tar.xz
 Summary:	High-performance DNS recursor
@@ -20,6 +20,9 @@ BuildRequires:	pkgconfig(libcap)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	systemd
 BuildRequires:	cargo
+
+%patchlist
+pdns-recursor-boost-1.89.patch
 
 %description
 The PowerDNS Recursor is a high-performance DNS recursor with built-in scripting
@@ -41,6 +44,9 @@ directory = "vendor"
 EOF
 cargo generate-lockfile --offline
 cd ../..
+
+aclocal -I m4
+autoconf
 
 %conf -a
 mkdir -p _OMV_rpm_build/settings/rust/.cargo
