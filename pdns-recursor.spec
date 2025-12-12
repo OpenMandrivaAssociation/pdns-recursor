@@ -10,6 +10,8 @@ Group:		Servers
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	slibtool
+BuildRequires:	libtool-base
+BuildRequires:	make
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(luajit)
 BuildRequires:	pkgconfig(openssl)
