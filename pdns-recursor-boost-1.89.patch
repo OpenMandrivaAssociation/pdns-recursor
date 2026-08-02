@@ -1,8 +1,7 @@
-diff -up pdns-recursor-5.2.2/configure.ac.omv~ pdns-recursor-5.2.2/configure.ac
-diff -up pdns-recursor-5.2.2/m4/boost.m4.omv~ pdns-recursor-5.2.2/m4/boost.m4
---- pdns-recursor-5.2.2/m4/boost.m4.omv~	2025-09-23 19:59:42.348112761 +0200
-+++ pdns-recursor-5.2.2/m4/boost.m4	2025-09-23 20:03:42.576359079 +0200
-@@ -633,12 +633,7 @@ BOOST_DEFUN([Cast],
+diff --git a/m4/boost.m4 b/m4/boost.m4
+--- a/m4/boost.m4
++++ b/m4/boost.m4
+@@ -633,12 +633,7 @@
  # --------------
  # Look for Boost.Chrono.
  BOOST_DEFUN([Chrono],
@@ -16,7 +15,7 @@ diff -up pdns-recursor-5.2.2/m4/boost.m4.omv~ pdns-recursor-5.2.2/m4/boost.m4
  boost_filesystem_save_LIBS=$LIBS
  boost_filesystem_save_LDFLAGS=$LDFLAGS
  m4_pattern_allow([^BOOST_SYSTEM_(LIBS|LDFLAGS)$])dnl
-@@ -816,10 +811,6 @@ boost_coroutine_save_LIBS=$LIBS
+@@ -816,10 +811,6 @@
  boost_coroutine_save_LDFLAGS=$LDFLAGS
  # Link-time dependency from coroutine to context
  BOOST_CONTEXT([$1], [$2])
@@ -27,7 +26,7 @@ diff -up pdns-recursor-5.2.2/m4/boost.m4.omv~ pdns-recursor-5.2.2/m4/boost.m4
  m4_pattern_allow([^BOOST_(CONTEXT|SYSTEM)_(LIBS|LDFLAGS)])
  LIBS="$LIBS $BOOST_CONTEXT_LIBS $BOOST_SYSTEM_LIBS"
  LDFLAGS="$LDFLAGS $BOOST_CONTEXT_LDFLAGS"
-@@ -888,12 +879,7 @@ BOOST_DEFUN([Exception],
+@@ -888,12 +879,7 @@
  # Do not check for boost/filesystem.hpp because this file was introduced in
  # 1.34.
  BOOST_DEFUN([Filesystem],
@@ -41,7 +40,7 @@ diff -up pdns-recursor-5.2.2/m4/boost.m4.omv~ pdns-recursor-5.2.2/m4/boost.m4
  boost_filesystem_save_LIBS=$LIBS
  boost_filesystem_save_LDFLAGS=$LDFLAGS
  m4_pattern_allow([^BOOST_SYSTEM_(LIBS|LDFLAGS)$])dnl
-@@ -1023,13 +1009,6 @@ BOOST_DEFUN([Locale],
+@@ -1023,13 +1009,6 @@
  [
  boost_locale_save_LIBS=$LIBS
  boost_locale_save_LDFLAGS=$LDFLAGS
@@ -55,7 +54,7 @@ diff -up pdns-recursor-5.2.2/m4/boost.m4.omv~ pdns-recursor-5.2.2/m4/boost.m4
  BOOST_FIND_LIB([locale], [$1],
      [boost/locale.hpp],
      [[boost::locale::generator gen; std::locale::global(gen(""));]], [], [], [$2])
-@@ -1366,10 +1345,6 @@ AC_REQUIRE([_BOOST_PTHREAD_FLAG])dnl
+@@ -1371,10 +1350,6 @@
  boost_thread_save_LIBS=$LIBS
  boost_thread_save_LDFLAGS=$LDFLAGS
  boost_thread_save_CPPFLAGS=$CPPFLAGS

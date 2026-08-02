@@ -1,3 +1,3 @@
 sources:
-  vendor.tar.xz: 80e0c98c89111303c1fc2b73c95fbe67b4cbeff3
-  pdns-recursor-5.3.1.tar.xz: c02433f1051e228d9de000af66eb755ea12d7db0
+  pdns-recursor-5.4.4.tar.xz: 5332a6ddede2630e706de943e6c88f57fda77fa7
+  vendor.tar.xz: 53c58a888873073a70e88046c118ba0adace0d9d
