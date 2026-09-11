@@ -1,7 +1,7 @@
 Name:		pdns-recursor
-Version:	5.4.4
-Release:	2
-Source0:	http://downloads.powerdns.com/releases/%{name}-%{version}.tar.xz
+Version:	5.4.6
+Release:	1
+Source0:	https://downloads.powerdns.com/releases/%{name}-%{version}.tar.xz
 Source1:	vendor.tar.xz
 Summary:	High-performance DNS recursor
 URL:		https://powerdns.com/recursor/
@@ -10,7 +10,6 @@ Group:		Servers
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	slibtool
-BuildRequires:	libtool-base
 BuildRequires:	make
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(luajit)
@@ -32,6 +31,10 @@ internet connections.
 
 %prep
 %autosetup -p1 -a1
+# vendor.tar.xz unpacks vendor/ at the source root
+if [ -d vendor ] && [ ! -d rec-rust-lib/rust/vendor ]; then
+	mv vendor rec-rust-lib/rust/
+fi
 cd rec-rust-lib/rust
 mkdir .cargo
 cat >.cargo/config.toml <<EOF
