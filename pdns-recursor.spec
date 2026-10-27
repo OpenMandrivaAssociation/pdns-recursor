@@ -1,5 +1,5 @@
 Name:		pdns-recursor
-Version:	5.4.8
+Version:	5.4.9
 Release:	1
 Source0:	https://downloads.powerdns.com/releases/%{name}-%{version}.tar.xz
 Source1:	vendor.tar.xz
